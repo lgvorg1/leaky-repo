@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 env:
-  XY_USERNAME: ${{ secrets.XY_USERNAME_PRO }}
-  XY_PASSWORD: ${{ secrets.XY_PASSWORD_PRO }}
+  XY_USERNAME: ${{ secrets.XY_USERNAME_PRO_TRIAL2 }}
+  XY_PASSWORD: ${{ secrets.XY_PASSWORD_PRO_TRIAL2 }}
   XY_URL: ${{ secrets.XY_URL_PRO }}
   XY_PRJ_NAME: LGV-GH-${{ github.event.repository.name }}-CMD
 
@@ -48,8 +48,8 @@ jobs:
         run: |
           echo Executing Xygeni scan ....    
           #${GITHUB_WORKSPACE}/scanner/xygeni scan --never-fail --no-conf-download --skip=codetamper --secrets-mode=history -n ${{ env.XY_PRJ_NAME }}_ALL --dir ${GITHUB_WORKSPACE} -e **/scanner/**
-          #${GITHUB_WORKSPACE}/scanner/xygeni secrets --never-fail --no-conf-download --upload -n ${{ env.XY_PRJ_NAME }}_SECRETS --dir ${GITHUB_WORKSPACE} -e **/scanner/**
-          ${GITHUB_WORKSPACE}/scanner/xygeni scan --never-fail --no-conf-download --run="secrets" --secrets-mode=history -n ${{ env.XY_PRJ_NAME }}_RUN --dir ${GITHUB_WORKSPACE} -e **/scanner/**
+          ${GITHUB_WORKSPACE}/scanner/xygeni secrets --never-fail --no-conf-download --upload -n ${{ env.XY_PRJ_NAME }}_NO_HISTORY --dir ${GITHUB_WORKSPACE} -e **/scanner/**
+          #${GITHUB_WORKSPACE}/scanner/xygeni scan --never-fail --no-conf-download --run="secrets" --secrets-mode=history -n ${{ env.XY_PRJ_NAME }}_RUN --dir ${GITHUB_WORKSPACE} -e **/scanner/**
           # --secrets-mode=history
         env:
           GITHUB_PAT: ${{ secrets.GH_PAT }}
