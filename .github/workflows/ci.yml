@@ -48,7 +48,7 @@ jobs:
         run: |
           echo Executing Xygeni scan ....    
           #${GITHUB_WORKSPACE}/scanner/xygeni scan --never-fail --no-conf-download --skip=codetamper --secrets-mode=history -n ${{ env.XY_PRJ_NAME }}_ALL --dir ${GITHUB_WORKSPACE} -e **/scanner/**
-          ${GITHUB_WORKSPACE}/scanner/xygeni secrets --never-fail --no-conf-download --upload -n ${{ env.XY_PRJ_NAME }}_NO_HISTORY --dir ${GITHUB_WORKSPACE} -e **/scanner/**
+          ${GITHUB_WORKSPACE}/scanner/xygeni secrets --no-stdin --never-fail --no-conf-download --upload -n ${{ env.XY_PRJ_NAME }}_NO_HISTORY --dir ${GITHUB_WORKSPACE} -e **/scanner/**
           #${GITHUB_WORKSPACE}/scanner/xygeni scan --never-fail --no-conf-download --run="secrets" --secrets-mode=history -n ${{ env.XY_PRJ_NAME }}_RUN --dir ${GITHUB_WORKSPACE} -e **/scanner/**
           # --secrets-mode=history
         env:
